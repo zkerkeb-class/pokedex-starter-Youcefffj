@@ -40,7 +40,7 @@
 
 .pokemon-container {
     width: 290px;
-    height: 180px;
+    height: 220px;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -49,14 +49,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Empêche tout dépassement */
+    overflow: hidden;
     margin-top: 10px;
 }
 
 .pokemon-image {
-    max-width: 90%;  /* Réduit la taille du Pokémon pour qu'il rentre bien */
-    max-height: 90%; /* Empêche qu'il dépasse en hauteur */
-    object-fit: contain; /* Garde la bonne proportion sans couper l'image */
+    max-width: 80%;  
+    max-height: 80%; 
+    object-fit: contain; 
     position: relative;
 }
 
