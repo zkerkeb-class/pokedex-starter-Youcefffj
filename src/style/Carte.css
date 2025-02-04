@@ -1,59 +1,103 @@
 .carte {
-    width: 250px;
+    width: 320px;
+    height: 450px;
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 18px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ffffff 30%, #f7f7f7);
     transition: transform 0.2s ease-in-out;
-    border: 3px solid rgba(0, 0, 0, 0.1);
     position: relative;
+    border: 6px solid var(--type-color, #ddd); /* Bordure principale */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /*  relief */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
+
+
+.carte::before {
+    display: none; /* de double bordure */
+}
+
 
 .carte:hover {
     transform: scale(1.05);
 }
 
 .carte h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
     color: #333;
+    text-transform: uppercase;
 }
 
-.carte img {
-    width: 100px;
-    height: 100px;
+.pokemon-image {
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 8px;
     padding: 5px;
+    border: 3px solid var(--type-color, #ddd);
 }
 
-.carte p {
-    font-size: 14px;
+.types {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.type-icon {
+    width: 76px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 16px;
     color: #444;
-    margin: 5px 0;
     font-weight: bold;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Ajoute un fond coloré en fonction du type */
+/* cadre carte */
 .carte::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    border-radius: 12px;
-    background: var(--type-color, #eee);
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    border-radius: 22px;
+    border: 4px solid var(--type-color, #ddd);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Différentes couleurs selon le type */
-.carte[data-type="Feu"] { --type-color: #ff6b6b; }
-.carte[data-type="Eau"] { --type-color: #6ba6ff; }
-.carte[data-type="Plante"] { --type-color: #77dd77; }
-.carte[data-type="Électrik"] { --type-color: #ffdd57; }
-.carte[data-type="Psy"] { --type-color: #ff77a9; }
-.carte[data-type="Combat"] { --type-color: #c56b6b; }
+/* Définition des couleurs par type */
+.carte[data-type="Fire"] { --type-color: #FF6B6B; }
+.carte[data-type="Water"] { --type-color: #6BA6FF; }
+.carte[data-type="Grass"] { --type-color: #77DD77; }
+.carte[data-type="Electric"] { --type-color: #FFDD57; }
+.carte[data-type="Psychic"] { --type-color: #FF77A9; }
+.carte[data-type="Fighting"] { --type-color: #C56B6B; }
+.carte[data-type="Poison"] { --type-color: #A040A0; }
+.carte[data-type="Ground"] { --type-color: #E0C068; }
+.carte[data-type="Rock"] { --type-color: #B8A038; }
+.carte[data-type="Flying"] { --type-color: #A98FF3; }
+.carte[data-type="Ghost"] { --type-color: #705898; }
+.carte[data-type="Dragon"] { --type-color: #7038F8; }
+.carte[data-type="Dark"] { --type-color: #705848; }
+.carte[data-type="Steel"] { --type-color: #B8B8D0; }
+.carte[data-type="Fairy"] { --type-color: #EE99AC; }
