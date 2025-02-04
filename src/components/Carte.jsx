@@ -1,11 +1,17 @@
 import '../style/Carte.css';
 
 const Carte = ({ pokemon }) => {
+    const randomBackground = Math.floor(Math.random() * 3) + 1;
+    //A rendre dynamique en fonction du type du pokemon
+    
+    const backgroundPath = `src/assets/background/Grass/Grass${randomBackground}.png`;
+
     return (
         <div className="carte" data-type={pokemon.type[0]}>
             <h2>{pokemon.name.french}</h2>
-            <img src={pokemon.image} alt={pokemon.name.french} className="pokemon-image" />
-
+            <div className="pokemon-container" style={{ backgroundImage: `url(${backgroundPath})` }}>
+                <img src={pokemon.image} alt={pokemon.name.french} className="pokemon-image" />
+            </div>
             <div className="types">
                 {pokemon.type.map((type) => (
                     <img

@@ -38,17 +38,27 @@
 }
 
 
-.pokemon-image {
-    width: 290px; 
-    height: 180px; 
-    object-fit: contain;
-    background: none; 
-    border-radius: 8px; 
-    padding: 10px; 
-    border: 3px solid black; 
-    margin-top: 20px;
+.pokemon-container {
+    width: 290px;
+    height: 180px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Empêche tout dépassement */
+    margin-top: 10px;
 }
 
+.pokemon-image {
+    max-width: 90%;  /* Réduit la taille du Pokémon pour qu'il rentre bien */
+    max-height: 90%; /* Empêche qu'il dépasse en hauteur */
+    object-fit: contain; /* Garde la bonne proportion sans couper l'image */
+    position: relative;
+}
 
 
 
