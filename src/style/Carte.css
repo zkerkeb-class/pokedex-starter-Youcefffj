@@ -1,0 +1,124 @@
+.carte {
+    width: 320px;
+    height: 450px;
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffffff 30%, #f7f7f7);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    border: 6px solid var(--type-color, #ddd);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px; 
+}
+
+.carte h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    margin: 0;
+}
+
+.carte::before {
+    display: none;
+}
+
+
+.carte:hover {
+    transform: scale(1.05);
+}
+
+
+.pokemon-container {
+    width: 290px;
+    height: 220px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.pokemon-image {
+    max-width: 80%;  
+    max-height: 80%; 
+    object-fit: contain; 
+    position: relative;
+}
+
+
+
+.types {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.type-icon {
+    width: 76px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.stats {
+    position: absolute;
+    bottom: 50px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    font-size: 16px;
+    color: #444;
+    font-weight: bold;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* cadre carte */
+.carte::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    border-radius: 22px;
+    border: 4px solid var(--type-color, #ddd);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carte[data-type="Fire"] { --type-color: #FF6B6B; }
+.carte[data-type="Water"] { --type-color: #6BA6FF; }
+.carte[data-type="Grass"] { --type-color: #138f13; }
+.carte[data-type="Electric"] { --type-color: #FFDD57; }
+.carte[data-type="Psychic"] { --type-color: #FF77A9; }
+.carte[data-type="Fighting"] { --type-color: #C56B6B; }
+.carte[data-type="Poison"] { --type-color: #A040A0; }
+.carte[data-type="Ground"] { --type-color: #E0C068; }
+.carte[data-type="Rock"] { --type-color: #B8A038; }
+.carte[data-type="Flying"] { --type-color: #A98FF3; }
+.carte[data-type="Ghost"] { --type-color: #705898; }
+.carte[data-type="Dragon"] { --type-color: #7038F8; }
+.carte[data-type="Dark"] { --type-color: #705848; }
+.carte[data-type="Steel"] { --type-color: #B8B8D0; }
+.carte[data-type="Fairy"] { --type-color: #EE99AC; }
