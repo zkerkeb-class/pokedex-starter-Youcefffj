@@ -85,7 +85,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Définition des couleurs par type */
 .carte[data-type="Fire"] { --type-color: #FF6B6B; }
 .carte[data-type="Water"] { --type-color: #6BA6FF; }
 .carte[data-type="Grass"] { --type-color: #77DD77; }

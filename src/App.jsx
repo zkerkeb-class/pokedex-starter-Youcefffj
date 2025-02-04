@@ -9,7 +9,7 @@ import pokemons from "./assets/pokemons";
 function App() {
   const [count, setCount] = useState(0)
   const nom = "Youcef"
-  const pokemon = pokemons[0];
+  const pokemon = pokemons[24];
   return (
     <>
       <div>
