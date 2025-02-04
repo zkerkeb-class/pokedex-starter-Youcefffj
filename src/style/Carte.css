@@ -8,17 +8,28 @@
     background: linear-gradient(135deg, #ffffff 30%, #f7f7f7);
     transition: transform 0.2s ease-in-out;
     position: relative;
-    border: 6px solid var(--type-color, #ddd); /* Bordure principale */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /*  relief */
+    border: 6px solid var(--type-color, #ddd);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding-top: 40px; 
 }
 
+.carte h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    margin: 0;
+}
 
 .carte::before {
-    display: none; /* de double bordure */
+    display: none;
 }
 
 
@@ -26,30 +37,27 @@
     transform: scale(1.05);
 }
 
-.carte h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-    color: #333;
-    text-transform: uppercase;
-}
 
 .pokemon-image {
-    width: 150px;
-    height: 150px;
+    width: 290px; 
+    height: 180px; 
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 8px;
-    padding: 5px;
-    border: 3px solid var(--type-color, #ddd);
+    background: none; 
+    border-radius: 8px; 
+    padding: 10px; 
+    border: 3px solid black; 
+    margin-top: 20px;
 }
 
+
+
+
 .types {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
     display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin: 10px 0;
-    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .type-icon {
@@ -59,10 +67,13 @@
 }
 
 .stats {
+    position: absolute;
+    bottom: 50px; 
+    left: 50%;
+    transform: translateX(-50%); 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 90%;
-    margin-top: 10px;
     font-size: 16px;
     color: #444;
     font-weight: bold;
@@ -71,6 +82,7 @@
     border-radius: 10px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 
 /* cadre carte */
 .carte::before {
@@ -87,7 +99,7 @@
 
 .carte[data-type="Fire"] { --type-color: #FF6B6B; }
 .carte[data-type="Water"] { --type-color: #6BA6FF; }
-.carte[data-type="Grass"] { --type-color: #77DD77; }
+.carte[data-type="Grass"] { --type-color: #138f13; }
 .carte[data-type="Electric"] { --type-color: #FFDD57; }
 .carte[data-type="Psychic"] { --type-color: #FF77A9; }
 .carte[data-type="Fighting"] { --type-color: #C56B6B; }
