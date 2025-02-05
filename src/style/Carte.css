@@ -7,6 +7,7 @@
 .carte[data-type="Fighting"] { background-image: url('/src/assets/background/Fightingback.webp'); }
 .carte[data-type="Poison"] { background-image: url('/src/assets/background/Poisonback.webp'); }
 .carte[data-type="Ground"] { background-image: url('/src/assets/background/Groundback.webp'); }
+.carte[data-type="Normal"] { background-image: url('/src/assets/background/Normalback.webp'); }
 .carte[data-type="Rock"] { background-image: url('/src/assets/background/Rockback.png'); }
 .carte[data-type="Flying"] { background-image: url('/src/assets/background/Flyingback.webp'); }
 .carte[data-type="Ghost"] { background-image: url('/src/assets/background/Ghostback.webp'); }
@@ -14,6 +15,10 @@
 .carte[data-type="Dark"] { background-image: url('/src/assets/background/Darkback.webp'); }
 .carte[data-type="Steel"] { background-image: url('/src/assets/background/Steelback.webp'); }
 .carte[data-type="Fairy"] { background-image: url('/src/assets/background/Fairyback.webp'); }
+.carte[data-type="Ice"] { background-image: url('/src/assets/background/Iceback.webp'); }
+.carte[data-type="Bug"] { background-image: url('/src/assets/background/Bugback.webp'); }
+
+
 
 .carte {
     width: 320px;
