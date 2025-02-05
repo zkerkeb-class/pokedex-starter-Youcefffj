@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Aligne horizontalement au centre */
+  gap: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.exemple {
+  display: block; /* Assure-toi que l'élément est de type bloc */
+  width: 320px;   /* Par exemple, la même largeur que ta carte */
+  margin: 0 auto; /* Centre horizontalement */
+}
