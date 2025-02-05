@@ -5,7 +5,9 @@
     border-radius: 18px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffffff 30%, #f7f7f7);
+    background-image: url('src/assets/background/Grassback.png');
+    background-size: cover; 
+    background-position: center; 
     transition: transform 0.2s ease-in-out;
     position: relative;
     border: 6px solid var(--type-color, #ddd);
@@ -18,15 +20,20 @@
 }
 
 .carte h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
-    color: #333;
+    color: white;
     text-transform: uppercase;
     position: absolute;
-    top: 10px;
-    left: 15px;
+    top: 6px;
+    left: 24px;
     margin: 0;
+    padding: 1px 4px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
+
 
 .carte::before {
     display: none;
