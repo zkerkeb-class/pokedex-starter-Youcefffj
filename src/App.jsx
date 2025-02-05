@@ -3,7 +3,7 @@ import Carte from './components/Carte'
 import pokemons from "./assets/pokemons";
 
 function App() {
-  const pokemon = pokemons[6];
+  const pokemon = pokemons[24];
   return (
     <>
       <div>
