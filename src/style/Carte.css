@@ -151,4 +151,8 @@
 .carte[data-type="Dark"] { --type-color: #705848; }
 .carte[data-type="Steel"] { --type-color: #B8B8D0; }
 .carte[data-type="Fairy"] { --type-color: #EE99AC; }
+.carte[data-type="Ice"] { --type-color: #98D8D8; }
+.carte[data-type="Bug"] { --type-color: #A8B820; }
+.carte[data-type="Normal"] { --type-color: #A8A878; }
+
 
