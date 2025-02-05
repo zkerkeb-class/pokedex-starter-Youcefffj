@@ -4,7 +4,7 @@ const Carte = ({ pokemon }) => {
     const randomBackground = Math.floor(Math.random() * 3) + 1;
     //A rendre dynamique en fonction du type du pokemon
 
-    const backgroundPath = `src/assets/background/Grass/Grass${randomBackground}.png`;
+    const backgroundPath = `src/assets/background/${pokemon.type[0]}/${pokemon.type[0]}${randomBackground}.png`;
     console.log(pokemon);
     return (
         <div className="carte" data-type={pokemon.type[0]}>

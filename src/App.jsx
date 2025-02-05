@@ -1,4 +1,3 @@
-import viteLogo from '/vite.svg'
 import './App.css'
 import Carte from './components/Carte'
 import pokemons from "./assets/pokemons";
