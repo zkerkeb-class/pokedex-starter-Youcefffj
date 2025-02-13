@@ -11,6 +11,9 @@ function App() {
   const [type, setType] = useState("all");
   const [sort, setSort] = useState("name");
 
+  // État pour le Pokémon sélectionné (pour la modale)
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
   const handleSearch = (e) => {setSearch(e.target.value);};
   const handleType = (e) => {setType(e.target.value);};
   const handleSort = (e) => {setSort(e.target.value);};
@@ -58,11 +61,22 @@ function App() {
       />
       <div className="gallery">
         {filteredPokemons.map((pokemon, index) => (
-          <Carte key={pokemon.id || index} pokemon={pokemon} />
+          // Chaque carte est cliquable : en cliquant, on affiche le Pokémon en grand
+          <div key={pokemon.id || index} onClick={() => setSelectedPokemon(pokemon)}>
+            <Carte key={pokemon.id || index} pokemon={pokemon} />
+          </div>
         ))}
       </div>
+
+     {selectedPokemon && (
+        <div className="modal" onClick={() => setSelectedPokemon(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <Carte pokemon={selectedPokemon} className="big-card" />
+          </div>
+        </div>
+      )}
     </>
   );
-}
+}       
 
 export default App;

@@ -57,3 +57,70 @@
   margin: 0 auto; /* Centre horizontalement */
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #362d2d;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}     
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.big-card {
+  width: 200%;
+  height: 200%;
+  transform: scale(10);
+} 
+
+.big-card img {
+  width: 200%;
+  height: 200%;
+  object-fit: cover;
+  transform: scale(4);
+}   
+
+.big-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.big-card .types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.big-card .stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.big-card .stats p {
+  margin: 0;
+}     
+
+
+
+
+
+
+
+
+
