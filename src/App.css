@@ -41,14 +41,15 @@
   color: #888;
 }
 
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 320px); /* 3 colonnes de 320px chacune */
-  gap: 50px; /* Espace entre les cartes */
-  justify-content: center; /* Centre la grille horizontalement */
-  padding: 80px;
-  background-color: #362d2d;
+  grid-template-columns: repeat(4, 320px); /* 4 colonnes de 320px */
+  gap: 60px;
+  justify-content: center;
+  padding: 20px;
 }
+
 
 
 .exemple {
@@ -95,10 +96,7 @@
   transform: scale(4);
 }   
 
-.big-card h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
+
 
 .big-card .types {
   display: flex;
@@ -111,10 +109,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-
-.big-card .stats p {
-  margin: 0;
-}     
+ 
 
 
 
