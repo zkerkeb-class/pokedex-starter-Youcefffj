@@ -61,7 +61,7 @@ function App() {
       />
       <div className="gallery">
         {filteredPokemons.map((pokemon, index) => (
-          // Chaque carte est cliquable : en cliquant, on affiche le Pokémon en grand
+          // Si clique sur la carte, on affiche le Pokémon en grand
           <div key={pokemon.id || index} onClick={() => setSelectedPokemon(pokemon)}>
             <Carte key={pokemon.id || index} pokemon={pokemon} />
           </div>
@@ -77,6 +77,6 @@ function App() {
       )}
     </>
   );
-}       
+}
 
 export default App;
