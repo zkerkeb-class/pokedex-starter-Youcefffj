@@ -23,51 +23,86 @@ function App() {
     setSort(e.target.value);
   };
 
+  const filteredPokemons = pokemons
+  .filter((pokemon) => {
+    const name = String(pokemon.name.french); // Conversion en chaîne
+    const matchesSearch = name.toLowerCase().includes(search.toLowerCase());
+    const matchesType = type === "all" || (pokemon.type && pokemon.type.includes(type));
+    return matchesSearch && matchesType;
+  })
+  .sort((a, b) => {
+    if (sort === "name") {
+      return String(a.name.french).localeCompare(String(b.name.french));
+    } else if (sort === "type") {
+      return String(a.type[0]).localeCompare(String(b.type[0]));
+    }
+    return 0;
+  });
+
+
   const handleReset = () => {
-    setReset(true);
+    setSearch("");
+    setType("all");
+    setSort("name");
   };
+
 
   return (
     <>
-
-      <h1>Une carte aléatoire</h1>
+      <h1>Carte aléatoire</h1>
       <div className="exemple">
         <Carte pokemon={pokemon} />
       </div>
       
-      //bar de recherche avec filtre par type
       <div className="search-bar">
-        <input type="text" placeholder="Rechercher un pokemon" />
-        <select name="type" id="type">
+      <h1>Pokedex</h1>
+        <input 
+          type="text" 
+          placeholder="Rechercher un pokemon" 
+          value={search}
+          onChange={handleSearch}
+        />
+        <select 
+          name="type" 
+          id="type" 
+          value={type}
+          onChange={handleType}
+        >
           <option value="all">Tous</option>
-          <option value="Bug">Normal</option>
-          <option value="Dark">Feu</option>
-          <option value="Dragon">Eau</option>
+          <option value="Normal">Normal</option>
+          <option value="Fire">Feu</option>
+          <option value="Water">Eau</option>
           <option value="Electric">Electrique</option>
-          <option value="Fairy">Plante</option>
-          <option value="Fighting">Glace</option>
-          <option value="Fire">Combat</option>
-          <option value="Flying">Poison</option>
-          <option value="Ghost">Sol</option>
-          <option value="Grass">Vol</option>
-          <option value="Ground">Psy</option>
-          <option value="Ice">Insecte</option>
-          <option value="Normal">Roche</option>
-          <option value="Poison">Spectre</option>
-          <option value="Psychic">Dragon</option>
-          <option value="Rock">Ténèbres</option>
+          <option value="Grass">Plante</option>
+          <option value="Ice">Glace</option>
+          <option value="Fighting">Combat</option>
+          <option value="Poison">Poison</option>
+          <option value="Ground">Sol</option>
+          <option value="Flying">Vol</option>
+          <option value="Psychic">Psy</option>
+          <option value="Bug">Insecte</option>
+          <option value="Rock">Roche</option>
+          <option value="Ghost">Spectre</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Dark">Ténèbres</option>
           <option value="Steel">Métal</option>
-          <option value="Water">Fée</option>         
+          <option value="Fairy">Fée</option>         
         </select>
-        <button>Rechercher</button>
-        <button>Réinitialiser</button>
-        <button>Trier par nom</button>
-        <button>Trier par type</button>
+        <select 
+          name="sort" 
+          id="sort" 
+          value={sort}
+          onChange={handleSort}
+        >
+          <option value="name">Trier par nom</option>
+          <option value="type">Trier par type</option>
+        </select>
+        <button onClick={handleReset}>Réinitialiser</button>
       </div>
 
-      <h1>Pokedex</h1>
+      
       <div className="gallery">
-      {pokemons.map((pokemon, index) => (
+      {filteredPokemons.map((pokemon, index) => (
         <Carte key={pokemon.id || index} pokemon={pokemon} />
       ))}
     </div>
