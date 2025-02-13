@@ -1,4 +1,3 @@
-
 .carte[data-type="Fire"] { background-image: url('/src/assets/background/Fireback.webp'); }
 .carte[data-type="Water"] { background-image: url('/src/assets/background/Waterback.webp'); }
 .carte[data-type="Grass"] { background-image: url('/src/assets/background/Grassback.png'); }
@@ -156,5 +155,26 @@
 .carte[data-type="Ice"] { --type-color: #98D8D8; }
 .carte[data-type="Bug"] { --type-color: #A8B820; }
 .carte[data-type="Normal"] { --type-color: #A8A878; }
+
+.shiny-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.shiny-button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.9);
+}
 
 

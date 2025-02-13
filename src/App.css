@@ -53,9 +53,10 @@
 
 
 .exemple {
-  display: block; /* Assure-toi que l'élément est de type bloc */
-  width: 320px;   /* Par exemple, la même largeur que ta carte */
-  margin: 0 auto; /* Centre horizontalement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .modal {

@@ -5,8 +5,6 @@ import pokemons from "./assets/pokemons";
 import { useState } from "react";
 
 function App() {
-  const randomIndex = Math.floor(Math.random() * pokemons.length);
-  const pokemon = pokemons[randomIndex];
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
   const [sort, setSort] = useState("name");
@@ -17,6 +15,7 @@ function App() {
   const handleSearch = (e) => {setSearch(e.target.value);};
   const handleType = (e) => {setType(e.target.value);};
   const handleSort = (e) => {setSort(e.target.value);};
+
 
   //Convertit le nom en chaine psk jsuis un golmon qui oublie les diff langues
   //nom match avec la recherche + recupération du type
@@ -44,12 +43,76 @@ function App() {
     setSort("name");
   };
 
+  //COMBAT 
+  //a rendre dynamique
+  const pokemon = pokemons[0];
+  const pokemon2 = pokemons[9];
+
+  //états pour les points de vie
+  const [pokemon1HP, setPokemon1HP] = useState(pokemon.base.HP);
+  const [pokemon2HP, setPokemon2HP] = useState(pokemon2.base.HP);
+  const [battleLog, setBattleLog] = useState([]);
+  const [isBattleOver, setIsBattleOver] = useState(false);
+
+  // Simulation d'une attaque
+  const attack = (attacker, defender, attackerHP, defenderHP, setDefenderHP) => {
+    const damage = Math.floor((attacker.base.Attack / 3) * (Math.random() * 0.4 + 0.7));
+    //calcul pv , 0 mini
+    const newHP = Math.max(0, defenderHP - damage);
+    // MAJ PV défenseur
+    setDefenderHP(newHP);
+    // Ajoute un message dans l'historique du combat
+    setBattleLog(prev => [...prev, `${attacker.name.french} attaque ! ${defender.name.french} perd ${damage} PV !`]);
+    // Vérifie si K.O.
+    if (newHP === 0) {
+      setBattleLog(prev => [...prev, `${defender.name.french} est K.O. !`]);
+      setIsBattleOver(true);
+    }
+  };
+
+  // Fonction pour simuler un tour de combat
+  const simulateBattle = () => {
+    if (isBattleOver) {
+      // Réinitialiser le combat
+      setPokemon1HP(pokemon.base.HP);
+      setPokemon2HP(pokemon2.base.HP);
+      setBattleLog([]);
+      setIsBattleOver(false);
+      return;
+    }
+
+    // Pokemon 1 attaque
+    attack(pokemon, pokemon2, pokemon1HP, pokemon2HP, setPokemon2HP);
+    if (pokemon2HP > 0) {
+      // Pokemon 2 contre-attaque
+      attack(pokemon2, pokemon, pokemon2HP, pokemon1HP, setPokemon1HP);
+    }
+  };
+
   return (
     <>
-      <h1>Carte aléatoire</h1>
+      <h1>Combat Aléatoire</h1>
       <div className="exemple">
-        <Carte pokemon={pokemon} />
+        <div>
+          <Carte pokemon={pokemon} />
+          <p>PV: {pokemon1HP}/{pokemon.base.HP}</p>
+        </div>
+        <div>
+          <Carte pokemon={pokemon2} />
+          <p>PV: {pokemon2HP}/{pokemon2.base.HP}</p>
+        </div>
       </div>
+      <button onClick={simulateBattle}>
+        {isBattleOver ? "Nouveau Combat" : "Attaquer !"}
+      </button>
+      <div className="battle-log">
+        {battleLog.map((log, index) => (
+          <p key={index}>{log}</p>
+        ))}
+      </div>
+
+
+
       <SearchBar
         search={search}
         handleSearch={handleSearch}
@@ -67,7 +130,7 @@ function App() {
           </div>
         ))}
       </div>
-
+      {/* affiche en grand la carte selec */}
      {selectedPokemon && (
         <div className="modal" onClick={() => setSelectedPokemon(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
