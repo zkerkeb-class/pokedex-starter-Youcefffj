@@ -1,9 +1,6 @@
 import '../style/Carte.css';
 
 const Carte = ({ pokemon }) => {
-    const randomBackground = Math.floor(Math.random() * 3) + 1;
-    //A rendre dynamique en fonction du type du pokemon
-
     const backgroundPath = `src/assets/background/${pokemon.type[0]}/${pokemon.type[0]}1.webp`;
     console.log(pokemon.type[0]);
     console.log(pokemon);
@@ -28,9 +25,9 @@ const Carte = ({ pokemon }) => {
                 <p>❤️ {pokemon.base.HP}</p>
                 <p>⚔️ {pokemon.base.Attack}</p>
                 <p>🛡️ {pokemon.base.Defense}</p>
-                <p>Sp.Att {pokemon.base.Defense}</p>
-                <p>Sp.Def {pokemon.base.Defense}</p>
-                <p>Speed {pokemon.base.Defense}</p>
+                <p>💥 {pokemon.base["Sp. Attack"]}</p>
+                <p>🧿 {pokemon.base["Sp. Defense"]}</p>
+                <p>👟 {pokemon.base.Speed}</p>
             </div>
         </div>
     );
