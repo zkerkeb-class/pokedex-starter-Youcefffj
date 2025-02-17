@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carte from "../components/Carte";
 import SearchBar from "../components/SearchBar";
-import pokemons from "../assets/pokemons";
 import "../App.css";
 import Description from '../components/Description';
-
+import { getPokemons } from "../API/ConfigAPI";
 
 function Pokedex() {
   const [search, setSearch] = useState("");
@@ -12,6 +11,28 @@ function Pokedex() {
   const [sort, setSort] = useState("name");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPokemons = async () => {
+      try {
+        const response = await getPokemons();
+        if (response && response.pokemons && Array.isArray(response.pokemons)) {
+          setPokemons(response.pokemons);
+        } else {
+          console.error("Format de données invalide:", response);
+          setPokemons([]);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Erreur lors du chargement des pokémons:", error);
+        setPokemons([]);
+        setLoading(false);
+      }
+    };
+    fetchPokemons();
+  }, []);
 
   const handleSearch = (e) => setSearch(e.target.value);
   const handleType = (e) => setType(e.target.value);
@@ -46,13 +67,17 @@ function Pokedex() {
         handleSort={handleSort}
         handleReset={handleReset}
       />
-      <div className="gallery">
-        {filteredPokemons.map((pokemon) => (
-          <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
-            <Carte pokemon={pokemon} />
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <div>Chargement...</div>
+      ) : (
+        <div className="gallery">
+          {filteredPokemons.map((pokemon) => (
+            <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
+              <Carte pokemon={pokemon} />
+            </div>
+          ))}
+        </div>
+      )}
       {selectedPokemon && (
           <div className="modal" onClick={() => {
             setSelectedPokemon(null);

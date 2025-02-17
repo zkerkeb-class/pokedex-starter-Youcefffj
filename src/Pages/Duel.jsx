@@ -1,18 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carte from "../components/Carte";
-import pokemons from "../assets/pokemons";
-import "../App.css"; 
+import { getPokemons } from "../API/ConfigAPI";
+import "../App.css";
 
 function Duel() {
-  // Sélection aléatoire des Pokémon
-  const getRandomPokemon = () => pokemons[Math.floor(Math.random() * pokemons.length)];
-  const [pokemon1, setPokemon1] = useState(getRandomPokemon());
-  const [pokemon2, setPokemon2] = useState(getRandomPokemon());
-  
-  const [pokemon1HP, setPokemon1HP] = useState(pokemon1.base.HP);
-  const [pokemon2HP, setPokemon2HP] = useState(pokemon2.base.HP);
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [pokemon1, setPokemon1] = useState(null);
+  const [pokemon2, setPokemon2] = useState(null);
+  const [pokemon1HP, setPokemon1HP] = useState(0);
+  const [pokemon2HP, setPokemon2HP] = useState(0);
   const [battleLog, setBattleLog] = useState([]);
   const [isBattleOver, setIsBattleOver] = useState(false);
+
+  useEffect(() => {
+    const fetchPokemons = async () => {
+      try {
+        const response = await getPokemons();
+        if (response && response.pokemons && Array.isArray(response.pokemons)) {
+          setPokemons(response.pokemons);
+          const randomPokemon1 = getRandomPokemon(response.pokemons);
+          const randomPokemon2 = getRandomPokemon(response.pokemons);
+          setPokemon1(randomPokemon1);
+          setPokemon2(randomPokemon2);
+          setPokemon1HP(randomPokemon1.base.HP);
+          setPokemon2HP(randomPokemon2.base.HP);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Erreur lors du chargement des pokémons:", error);
+        setLoading(false);
+      }
+    };
+    fetchPokemons();
+  }, []);
+
+  const getRandomPokemon = (pokemonArray) => {
+    return pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
+  };
 
   const attack = (attacker, defender, defenderHP, setDefenderHP) => {
     const damage = Math.floor((attacker.base.Attack / 3) * (Math.random() * 0.4 + 0.7));
@@ -28,9 +53,8 @@ function Duel() {
 
   const simulateBattle = () => {
     if (isBattleOver) {
-      // Recommencer un combat avec de nouveaux Pokémon
-      const newPokemon1 = getRandomPokemon();
-      const newPokemon2 = getRandomPokemon();
+      const newPokemon1 = getRandomPokemon(pokemons);
+      const newPokemon2 = getRandomPokemon(pokemons);
       setPokemon1(newPokemon1);
       setPokemon2(newPokemon2);
       setPokemon1HP(newPokemon1.base.HP);
@@ -40,12 +64,15 @@ function Duel() {
       return;
     }
 
-    // Combat tour par tour
     attack(pokemon1, pokemon2, pokemon2HP, setPokemon2HP);
     if (pokemon2HP > 0) {
       attack(pokemon2, pokemon1, pokemon1HP, setPokemon1HP);
     }
   };
+
+  if (loading) {
+    return <div>Chargement...</div>;
+  }
 
   return (
     <>
