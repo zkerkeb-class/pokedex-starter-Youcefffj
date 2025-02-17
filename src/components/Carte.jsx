@@ -1,9 +1,31 @@
 import '../style/Carte.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getPokemonTypes, API_URL } from '../API/ConfigAPI';
 
 const Carte = ({ pokemon }) => {
     const backgroundPath = `src/assets/background/${pokemon.type[0]}/${pokemon.type[0]}1.webp`;
-    const [isShiny, setIsShiny] = useState(false);  // Ajout de l'état
+    const [isShiny, setIsShiny] = useState(false); 
+    const [types, setTypes] = useState({});
+
+    useEffect(() => {
+        const fetchTypes = async () => {
+            try {
+                const typeData = await getPokemonTypes();
+                console.log("dat dzekl API:", typeData); 
+                const typeMap = {};
+                const typesArray = typeData.types || typeData;
+                typesArray.forEach(type => {
+                    const imageUrl = type.image.replace('${process.env.API_URL}', API_URL);
+                    typeMap[type.type] = imageUrl;
+                });
+                console.log("Type Map ezfkjzf:", typeMap); 
+                setTypes(typeMap);
+            } catch (error) {
+                console.error("Erreur lors du chargement des types:", error);
+            }
+        };
+        fetchTypes();
+    }, []);
 
     //console.log(pokemon.type[0]);
     //console.log(pokemon);
@@ -25,13 +47,17 @@ const Carte = ({ pokemon }) => {
                 </button>
             </div>
             <div className="types">
-                {pokemon.type.map((type) => (
-                    <img
-                        key={type}
-                        src={`src/assets/types/${type}.png`}
-                        alt={type}
-                        className="type-icon"
-                    />
+                {pokemon.type.map((type, index) => (
+                    <div key={index} className="type">
+                        {types[type] ? (
+                                <img
+                                    src={types[type]}
+                                    className="type-icon"  
+                                />
+                        ) : (
+                            <span className="type-name">{type}</span>
+                        )}
+                    </div>
                 ))}
             </div>
 
