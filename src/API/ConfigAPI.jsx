@@ -34,4 +34,10 @@ export const deletePokemon = async (id) => {
     return response.data;
 };
 
+export const getPokemonTypes = async () => {
+    const response = await api.get("/api/types");
+    return response.data;
+};
+
+
 

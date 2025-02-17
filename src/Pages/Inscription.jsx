@@ -18,3 +18,6 @@ function Inscription() {
 }
 
 export default Inscription;
+
+
+/**mongooz */
