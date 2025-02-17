@@ -96,11 +96,18 @@
 }
 
 .modal-content {
-  background-color: #362d2d;
+  background-color: rgba(54, 45, 45, 0.9);
   padding: 20px;
   border-radius: 10px;
   position: relative;
-}     
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.modal-content .big-card {
+  flex-shrink: 0;
+}
 
 .close-btn {
   position: absolute;
@@ -160,6 +167,32 @@ body {
 
 
 
+.voir-description {
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.voir-description:hover {
+  background: linear-gradient(90deg, #ff9900, #ff6600);
+  transform: scale(1.05);
+}
+
+.description-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  flex: 1;
+  margin: 0;
+  align-self: center;
+}
 
 
 

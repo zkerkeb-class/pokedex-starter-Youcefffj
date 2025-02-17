@@ -3,12 +3,15 @@ import Carte from "../components/Carte";
 import SearchBar from "../components/SearchBar";
 import pokemons from "../assets/pokemons";
 import "../App.css";
+import Description from '../components/Description';
+
 
 function Pokedex() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
   const [sort, setSort] = useState("name");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [showDescription, setShowDescription] = useState(false);
 
   const handleSearch = (e) => setSearch(e.target.value);
   const handleType = (e) => setType(e.target.value);
@@ -51,11 +54,21 @@ function Pokedex() {
         ))}
       </div>
       {selectedPokemon && (
-        <div className="modal" onClick={() => setSelectedPokemon(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Carte pokemon={selectedPokemon} className="big-card" />
+          <div className="modal" onClick={() => {
+            setSelectedPokemon(null);
+            setShowDescription(false);
+          }}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <Carte pokemon={selectedPokemon} className="big-card" />
+              {showDescription ? (
+                <Description pokemon={selectedPokemon} />
+              ) : (
+                <div className="voir-description" onClick={() => setShowDescription(true)}>
+                  Voir la description
+                </div>
+              )}
+            </div>
           </div>
-        </div>
       )}
     </div>
   );
