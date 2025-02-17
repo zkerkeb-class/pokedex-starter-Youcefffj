@@ -2,6 +2,8 @@ import React from 'react';
 import '../style/SearchBar.css'; 
 
 function SearchBar({ search, handleSearch, type, handleType, sort, handleSort, handleReset }) {
+  const pokemonTypes = [{ value: "all", label: "Tous" },{ value: "Normal", label: "Normal" },{ value: "Fire", label: "Feu" },{ value: "Water", label: "Eau" },{ value: "Electric", label: "Electrique" },{ value: "Grass", label: "Plante" },{ value: "Ice", label: "Glace" },{ value: "Fighting", label: "Combat" },{ value: "Poison", label: "Poison" },{ value: "Ground", label: "Sol" },{ value: "Flying", label: "Vol" },{ value: "Psychic", label: "Psy" },{ value: "Bug", label: "Insecte" },{ value: "Rock", label: "Roche" },{ value: "Ghost", label: "Spectre" },{ value: "Dragon", label: "Dragon" },{ value: "Dark", label: "Ténèbres" },{ value: "Steel", label: "Métal" },{ value: "Fairy", label: "Fée" }];
+  
   return (
     <div className="search-bar">
       <h1>
@@ -19,25 +21,11 @@ function SearchBar({ search, handleSearch, type, handleType, sort, handleSort, h
         value={type}
         onChange={handleType}
       >
-        <option value="all">Tous</option>
-        <option value="Normal">Normal</option>
-        <option value="Fire">Feu</option>
-        <option value="Water">Eau</option>
-        <option value="Electric">Electrique</option>
-        <option value="Grass">Plante</option>
-        <option value="Ice">Glace</option>
-        <option value="Fighting">Combat</option>
-        <option value="Poison">Poison</option>
-        <option value="Ground">Sol</option>
-        <option value="Flying">Vol</option>
-        <option value="Psychic">Psy</option>
-        <option value="Bug">Insecte</option>
-        <option value="Rock">Roche</option>
-        <option value="Ghost">Spectre</option>
-        <option value="Dragon">Dragon</option>
-        <option value="Dark">Ténèbres</option>
-        <option value="Steel">Métal</option>
-        <option value="Fairy">Fée</option>         
+        {pokemonTypes.map((pokemonType) => (
+          <option key={pokemonType.value} value={pokemonType.value}>
+            {pokemonType.label}
+          </option>
+        ))}
       </select>
       <select 
         name="sort" 

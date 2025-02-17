@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  min-height: 100vh;
 }
 
 .logo {
@@ -41,16 +42,29 @@
   color: #888;
 }
 
-
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, 320px); /* 4 colonnes de 320px */
-  gap: 60px;
+  grid-template-columns: repeat(4, 1fr); /* Exactement 4 colonnes */
+  gap: 20px;
   justify-content: center;
   padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Ajustez cette valeur selon vos besoins */
+}
+
+/* Ajoutez une media query pour la responsivité sur les petits écrans */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 .exemple {
   display: flex;
@@ -69,6 +83,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+/* Ajoute un espace sous la navbar */
+.pokedex-container {
+  margin-top: 80px; /* Au lieu de padding-top */
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  min-height: 100vh; /* Assure que le conteneur prend au moins toute la hauteur de la vue */
 }
 
 .modal-content {
@@ -97,8 +121,6 @@
   transform: scale(4);
 }   
 
-
-
 .big-card .types {
   display: flex;
   justify-content: center;
@@ -110,7 +132,31 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
- 
+
+.app-container {
+  padding-top: 60px; /* Ajustez cette valeur en fonction de la hauteur de votre NavBar */
+}
+
+.pokedex {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Ajoutez ces styles pour le corps de la page */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  padding: 0; /* Retirez le padding par défaut */
+  margin: 0;
+  max-width: none; /* Retirez la limitation de largeur */
+}
 
 
 
