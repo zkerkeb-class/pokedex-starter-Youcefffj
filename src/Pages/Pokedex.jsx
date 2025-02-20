@@ -3,7 +3,7 @@ import Carte from "../components/Carte";
 import SearchBar from "../components/SearchBar";
 import "../App.css";
 import Description from '../components/Description';
-import { getPokemons, getPokemonTypes } from "../API/ConfigAPI";
+import { getPokemons } from "../API/ConfigAPI";
 
 function Pokedex() {
   const [search, setSearch] = useState("");
