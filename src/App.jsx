@@ -13,6 +13,7 @@ function App() {
       <Navbar />
       <div className="app-container">
         <Routes>
+          <Route path="/" element={<Pokedex />} />
           <Route path="/Pokedex" element={<Pokedex />} />
           <Route path="/duel" element={<Duel />} />
           <Route path="/Account" element={<Account />} />
