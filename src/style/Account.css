@@ -1,0 +1,92 @@
+/* Style général */
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+
+/* Centrer le conteneur */
+.login-container {
+    background: rgba(30, 30, 30, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Centrer les champs de saisie */
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-input {
+    width: 90%; /* Réduit la largeur pour laisser un peu d'espace */
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    text-align: center; 
+  }
+  
+  .login-input:focus {
+    background: #333;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  }
+  
+  .login-button {
+    width: 95%;
+    margin-top: 15px;
+  }
+  
+.login-title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffcc00;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.login-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ff9900, #ff6600);
+}
+
+/* Lien vers l'inscription */
+.login-signup {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.login-link:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
