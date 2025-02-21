@@ -1,16 +1,18 @@
 import axios from 'axios';
+import { api } from './AuthAPI';
 
 // Config de l'api serveur en local
 export const API_URL = import.meta.env.VITE_API_URL;
 
-//axios instance
-export const api = axios.create({
-    baseURL: API_URL,
-});
-//fonction pour récupérer les pokemons
+// Fonction pour récupérer les pokemons avec authentification
 export const getPokemons = async () => {
-    const response = await api.get("/api/pokemons");
-    return response.data;
+    try {
+        const response = await api.get("/api/pokemons");
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching pokemons:', error);
+        throw error;
+    }
 };
 
 export const getPokemonById = async (id) => {
