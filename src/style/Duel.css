@@ -1,0 +1,123 @@
+.duel-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Duel-title {
+  font-size: 2em;
+  color: #fff;
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.battle-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100px;
+}
+
+.exemple {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.exemple > div {
+  position: relative;  /* Container for card and HP */
+  display: flex;
+  flex-direction: column;
+}
+
+.exemple p {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;  /* Remove default margin */
+  margin-bottom: 10px;  /* Space between HP and card */
+  order: -1;  /* Move HP above the card */
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin: 20px 0;
+}
+
+.battle-log {
+  flex: 1;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  max-width: 800px;
+  margin-right: auto;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.battle-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  height: fit-content;
+  position: sticky;
+  top: 0;
+}
+
+.battle-button:hover {
+  background-color: #ff3838;
+}
+
+/* Ajout pour les PV */
+.exemple p {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: -30px;
+  width: 100px;
+}
+
+/* Add specific positioning for each HP text */
+.exemple > div:first-child p {
+  left: calc(25% - 50px);
+}
+
+.exemple > div:last-child p {
+  right: calc(25% - 50px);
+}
