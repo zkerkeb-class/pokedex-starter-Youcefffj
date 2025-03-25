@@ -3,21 +3,30 @@
 //afficher les informations du compte
 import { Link, useNavigate } from "react-router-dom";
 import "../style/Account.css";
-import React, { useState } from "react";
-import { login } from "../API/usersAPI";
+import React, { useState, useEffect } from "react";
+import { login, isAuthenticated } from "../API/usersAPI";
 
-function Account() {
+function Account({ setUserLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Rediriger si déjà connecté
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     
     try {
-      await login(username, password);
+      const user = await login(username, password);
+      // Mettre à jour l'état de connexion dans l'application
+      setUserLoggedIn(true);
       // Redirection vers la page d'accueil après connexion réussie
       navigate("/");
     } catch (error) {
