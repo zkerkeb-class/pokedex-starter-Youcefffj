@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     background-color: #2b222c;
@@ -54,7 +54,8 @@
     background-color: #0e7a0e;
   }
   .Pokeball {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
   }
   

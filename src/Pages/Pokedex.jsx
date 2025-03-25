@@ -57,7 +57,7 @@ function Pokedex() {
 
   return (
     <div className="pokedex-container">
-      <h1>Pokedex</h1>
+      <h1 className="pokedex-title">Pokedex</h1>
       <SearchBar
         search={search}
         handleSearch={handleSearch}

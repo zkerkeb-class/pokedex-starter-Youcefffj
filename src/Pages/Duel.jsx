@@ -75,8 +75,16 @@ function Duel() {
   }
 
   return (
-    <>
-      <h1>Duel Aléatoire</h1>
+    <div className="duel-container">
+      <h1 className="Duel-title">Duel Aléatoire</h1>
+      <div className="battle-container">
+        <div className="battle-log">
+          {battleLog.length > 0 && <p>{battleLog[battleLog.length - 1]}</p>}
+          <button className="battle-button" onClick={simulateBattle}>
+            {isBattleOver ? "Nouveau Combat" : "Attaquer !"}
+          </button>
+        </div>
+      </div>
       <div className="exemple">
         <div>
           <Carte pokemon={pokemon1} />
@@ -87,15 +95,7 @@ function Duel() {
           <p>PV: {pokemon2HP}/{pokemon2.base.HP}</p>
         </div>
       </div>
-      <button onClick={simulateBattle}>
-        {isBattleOver ? "Nouveau Combat" : "Attaquer !"}
-      </button>
-      <div className="battle-log">
-        {battleLog.map((log, index) => (
-          <p key={index}>{log}</p>
-        ))}
-      </div>
-    </>
+    </div>
   );
 }
 

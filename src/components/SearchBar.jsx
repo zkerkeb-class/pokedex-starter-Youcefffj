@@ -6,9 +6,7 @@ function SearchBar({ search, handleSearch, type, handleType, sort, handleSort, h
   
   return (
     <div className="search-bar">
-      <h1>
-        <img src="src/assets/logo.png" alt="logo" className="Pokeball" />
-      </h1>
+      <img src="src/assets/logo.png" alt="logo" className="Pokeball" />
       <input 
         type="text" 
         placeholder="Rechercher un pokemon" 
