@@ -6,8 +6,11 @@ import Duel from "./Pages/Duel";
 import Account from "./Pages/Account";
 import Inscription from "./Pages/Inscription";
 import Description from "./components/Description";
+import Favoris from "./Pages/Favoris";
+import MonPokedex from "./Pages/MonPokedex";
 import { login } from "./API/AuthAPI";
 import { useEffect, useState } from "react";
+import PackOpening from "./Pages/PackOpening";
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
           <Route path="/Account" element={<Account />} />
           <Route path="/Account/Inscription" element={<Inscription />} />
           <Route path="/Pokedex/:id" element={<Description />} />
+          <Route path="/favoris" element={<Favoris/>} />
+          <Route path="/MonPokedex" element={<MonPokedex />} />
+          <Route path="/PackOpening" element={<PackOpening />} />
         </Routes>
       </div>
     </Router>
