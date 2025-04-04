@@ -13,10 +13,12 @@ export const login = async (username, password) => {
         });
         
         if (response.data.user) {
+            // Stockage des informations utilisateur
             localStorage.setItem('currentUser', JSON.stringify({
                 id: response.data.user._id,
                 username: response.data.user.username
             }));
+            console.log(response.data.user._id);
             return response.data.user;
         }
     } catch (error) {
@@ -47,31 +49,28 @@ export const logout = () => {
 
 // Fonction pour obtenir l'utilisateur actuel
 export const getCurrentUser = () => {
-    const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user) : null;
+    const userStr = localStorage.getItem('currentUser');
+    return userStr ? JSON.parse(userStr) : null;
 };
 
 // Fonction pour l'inscription d'un nouvel utilisateur
 export const register = async (username, password) => {
     try {
         const response = await api.post("/api/users/register", {
-            username: username,
-            password: password 
+            username,
+            password
         });
         
-        if (response.status === 201) {
-            // Si l'inscription réussit, on connecte directement l'utilisateur
+        if (response.data.user) {
+            // Stockage des informations utilisateur après inscription
             localStorage.setItem('currentUser', JSON.stringify({
                 id: response.data.user._id,
                 username: response.data.user.username
             }));
-            return response.data;
+            return response.data.user;
         }
     } catch (error) {
-        console.error("Erreur détaillée:", error.response || error);
-        if (error.response?.data?.message) {
-            throw new Error(error.response.data.message);
-        }
-        throw new Error("Erreur lors de l'inscription");
+        console.error("Erreur d'inscription:", error.response || error);
+        throw new Error(error.response?.data?.message || "Erreur lors de l'inscription");
     }
 };

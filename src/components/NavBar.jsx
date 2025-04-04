@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/NavBar.css";
-import { logout } from "../API/usersAPI";
+import { logout, getCurrentUser } from "../API/usersAPI";
 
 function Navbar({ isLoggedIn }) {
   const navigate = useNavigate();
+  const currentUser = getCurrentUser(); // Obtenir l'utilisateur actuel
 
   const handleLogout = () => {
     logout();
@@ -34,6 +35,9 @@ function Navbar({ isLoggedIn }) {
             </li>
             <li>
               <Link to="/PackOpening">Pack Opening</Link>
+            </li>
+            <li>
+              <span className="user-name">{currentUser?.username}</span>
             </li>
             <li>
               <button onClick={handleLogout} className="logout-button">
