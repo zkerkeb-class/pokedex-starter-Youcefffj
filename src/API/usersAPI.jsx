@@ -7,41 +7,22 @@ export const API_URL = import.meta.env.VITE_API_URL;
 // Fonction pour authentification de l'utilisateur
 export const login = async (username, password) => {
     try {
-        // D'abord récupérer tous les utilisateurs
-        const response = await api.get("/api/users");
-        const users = response.data.users;
+        const response = await api.post("/api/users/login", {
+            username,
+            password
+        });
         
-        // Vérifier si l'utilisateur existe et si le mot de passe correspond
-        const user = users.find(u => u.username === username && u.mdp === password);
-        
-        if (user) {
-            // Stocker les informations de l'utilisateur dans le localStorage
+        if (response.data.user) {
             localStorage.setItem('currentUser', JSON.stringify({
-                id: user._id,
-                username: user.username
+                id: response.data.user._id,
+                username: response.data.user.username
             }));
-            return user;
-        } else {
-            throw new Error("Nom d'utilisateur ou mot de passe incorrect");
+            return response.data.user;
         }
     } catch (error) {
-        throw error;
+        console.error('Erreur de connexion:', error.response || error);
+        throw new Error("Nom d'utilisateur ou mot de passe incorrect");
     }
-};
-
-export const getPokemons = async () => {
-    try {
-        const response = await api.get("/api/pokemons");
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching pokemons:', error);
-        throw error;
-    }
-};
-
-export const getPokemonById = async (id) => {
-    const response = await api.get(`/api/pokemons/${id}`);
-    return response.data;
 };
 
 export const getUsers = async () => {
@@ -68,4 +49,29 @@ export const logout = () => {
 export const getCurrentUser = () => {
     const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user) : null;
+};
+
+// Fonction pour l'inscription d'un nouvel utilisateur
+export const register = async (username, password) => {
+    try {
+        const response = await api.post("/api/users/register", {
+            username: username,
+            password: password 
+        });
+        
+        if (response.status === 201) {
+            // Si l'inscription réussit, on connecte directement l'utilisateur
+            localStorage.setItem('currentUser', JSON.stringify({
+                id: response.data.user._id,
+                username: response.data.user.username
+            }));
+            return response.data;
+        }
+    } catch (error) {
+        console.error("Erreur détaillée:", error.response || error);
+        if (error.response?.data?.message) {
+            throw new Error(error.response.data.message);
+        }
+        throw new Error("Erreur lors de l'inscription");
+    }
 };

@@ -25,9 +25,7 @@ function Account({ setUserLoggedIn }) {
     
     try {
       const user = await login(username, password);
-      // Mettre à jour l'état de connexion dans l'application
       setUserLoggedIn(true);
-      // Redirection vers la page d'accueil après connexion réussie
       navigate("/");
     } catch (error) {
       setError(error.message || "Une erreur est survenue lors de la connexion");

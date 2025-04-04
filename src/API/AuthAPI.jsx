@@ -21,7 +21,7 @@ export const login = async () => {
             password
         });
         
-        console.log('Login response:', response.data);
+        //console.log('Login response:', response.data);
         
         // Store token in localStorage
         if (response.data.token) {
@@ -39,7 +39,7 @@ export const login = async () => {
 
 // Add request interceptor for debugging
 api.interceptors.request.use(request => {
-    console.log('Starting Request:', request);
+    //console.log('Starting Request:', request);
     return request;
 });
 

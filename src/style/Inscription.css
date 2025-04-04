@@ -87,3 +87,11 @@
     text-decoration: underline;
   }
   
+  /* Ajoutez ce style pour les messages d'erreur */
+  .inscription-error {
+    color: #ff4444;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
