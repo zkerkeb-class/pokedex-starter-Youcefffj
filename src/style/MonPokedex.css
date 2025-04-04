@@ -1,0 +1,36 @@
+.mon-pokedex-container {
+  padding: 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mon-pokedex-container h1 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.gallery {
+  display: grid;
+  gap: 2rem;
+  padding: 20px;
+  justify-items: center;
+}
+
+.search-container {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.empty-message {
+  margin: 20px;
+  color: #666;
+  font-style: italic;
+} 

@@ -1,0 +1,77 @@
+.pack-opening-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.game-container {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.number-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.number-button {
+    padding: 15px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.number-button:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+}
+
+.start-game-button, .open-pack-button, .retry-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 20px;
+    background-color: #ff5d5d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.start-game-button:hover, .open-pack-button:hover, .retry-button:hover {
+    transform: scale(1.05);
+}
+
+.open-pack-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.opened-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.error-message {
+    color: red;
+    margin: 20px;
+}
+
+.result-container {
+    margin: 20px;
+}
+
+.result-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+} 

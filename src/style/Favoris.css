@@ -1,0 +1,22 @@
+.favoris-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.favoris-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+} 
