@@ -1,8 +1,12 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
@@ -40,3 +44,187 @@
 .read-the-docs {
   color: #888;
 }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Exactement 4 colonnes */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Ajustez cette valeur selon vos besoins */
+}
+
+/* Ajoutez une media query pour la responsivité sur les petits écrans */
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.exemple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Ajoute un espace sous la navbar */
+.pokedex-container {
+  margin-top: 20px; /* Réduit la marge en haut */
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px; /* Gardons uniquement le padding horizontal */
+  min-height: 100vh;
+}
+.pokedex-title {
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content {
+  background-color: rgba(54, 45, 45, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.modal-content .big-card {
+  flex-shrink: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.big-card {
+  width: 200%;
+  height: 200%;
+  transform: scale(10);
+} 
+
+.big-card img {
+  width: 200%;
+  height: 200%;
+  object-fit: cover;
+  transform: scale(4);
+}   
+
+.big-card .types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.big-card .stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.app-container {
+  padding-top: 40px;
+  min-height: calc(100vh - 40px);
+  background: #1a1a1a;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokedex {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Ajoutez ces styles pour le corps de la page */
+body {
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+}
+
+#root {
+  min-height: 100vh;
+  padding: 0; /* Retirez le padding par défaut */
+  margin: 0;
+  max-width: none; /* Retirez la limitation de largeur */
+}
+
+
+
+.voir-description {
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.voir-description:hover {
+  background: linear-gradient(90deg, #ff9900, #ff6600);
+  transform: scale(1.05);
+}
+
+.description-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  flex: 1;
+  margin: 0;
+  align-self: center;
+}
+
+/* Assurez-vous que le body et html ont aussi le bon background */
+:root {
+  background: #1a1a1a;
+}
+
+/* Supprimons ou modifions ces styles qui pourraient causer des conflits */
+h1 {
+  text-align: center;
+  width: 100%;
+}
+
+
+
+
+
+
